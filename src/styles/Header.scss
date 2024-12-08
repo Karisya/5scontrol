@@ -1,0 +1,72 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #100e0e;  
+    color: white;             
+    font-family: Arial, sans-serif;
+  
+    &__logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fb8c00;
+    }
+  
+    &__menu{
+      ul {
+        display: flex;
+        list-style: none;
+      }
+  
+      li {
+        margin: 0 15px;
+  
+        a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 5px 10px;
+          transition: background-color 0.3s ease;  
+          &:hover {
+            background-color: #fb8c00;  // При наведении изменяется фон
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  } 
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      padding: 10px;
+  
+      &__logo{
+        font-size: 20px;
+      }
+
+      .menu{
+        margin-top: 10px;
+        ul {
+          flex-direction: column;
+          align-items: center;
+        }
+  
+        li {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header__logo {
+      font-size: 18px;
+    }
+  
+    .menu ul {
+      font-size: 14px;
+    }
+  }
+  
