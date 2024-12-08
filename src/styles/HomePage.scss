@@ -1,0 +1,26 @@
+.home-page{
+    padding: 20px;
+}
+
+
+@media (max-width: 768px) {
+   h1{
+    font-size: 20px;
+   }
+   section{
+    font-size: 14px;
+   }
+  }
+  
+  @media (max-width: 480px) {
+    .home-page{
+        padding: 10px;
+    }
+    h1{
+        font-size: 16px;
+       }
+       section{
+        font-size: 14px;
+       }
+  }
+  
