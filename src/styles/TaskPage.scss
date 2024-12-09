@@ -1,0 +1,16 @@
+.task-page{
+    h2{
+        color: #fb8c00;
+    }
+
+    @media (max-width: 768px) {
+        h2{
+            font-size: 20px;
+        }
+    }   
+       @media (max-width: 480px) {
+        h2{
+            font-size: 18px;
+        }
+    }
+}
