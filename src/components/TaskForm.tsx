@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import '../styles/TaskForm.scss';
 import { useDispatch, useSelector } from "react-redux";
 import { addTask, updateTask } from '../redux/slices/tasksSlice';
-import { setShow } from "../redux/slices/showSlice";
+import { setShowForm } from "../redux/slices/showFormSlice";
 import { setEditTask } from "../redux/slices/editTaskSlice";
 import { Task } from "../utilts/utilts";
   
@@ -41,10 +41,10 @@ const TaskForm:React.FC=()=>{
           if (task) {
             dispatch(updateTask(newTask)); 
             dispatch(setEditTask(null));
-            dispatch(setShow(false))
+            dispatch(setShowForm(false))
           } else {
             dispatch(addTask(newTask)); 
-            dispatch(setShow(false))
+            dispatch(setShowForm(false))
           }
 
           setName("");

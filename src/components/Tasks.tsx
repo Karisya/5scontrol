@@ -1,33 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import TaskForm from "./TaskForm";
 import '../styles/Tasks.scss';
 import deleteIcon from '../SVG/icons8-delete.svg';
 import editIcon from "../SVG/icons8-edit.svg"
 import { removeTask, updateTask } from '../redux/slices/tasksSlice';
-import { setShow } from "../redux/slices/showSlice";
+import { setShowForm } from "../redux/slices/showFormSlice";
 import { setEditTask } from "../redux/slices/editTaskSlice";
+import { setShowModal } from "../redux/slices/showModalSlice";
 import { Task } from "../utilts/utilts";
+import Modal from "./Modal";
 
 
 const Tasks:React.FC=()=>{
 
     const tasks = useSelector((state: { tasks: { tasks: Task[] } }) => state.tasks.tasks);
-    const show = useSelector((state: { show: { show: boolean } }) => state.show.show);
+    const showForm = useSelector((state: { showForm: { showForm: boolean } }) => state.showForm.showForm);
+    const showModal = useSelector((state: { showModal: { showModal: boolean } }) => state.showModal.showModal);
+
     const dispatch = useDispatch();
 
     const hanbleShowForm=()=>{
-        dispatch(setShow(true))
+        dispatch(setShowForm(true))
     }
 
     const handleDeleteTask = (id: number) => {
+        dispatch(setShowModal({ showModal: true, taskId: id }));
         dispatch(removeTask(id));
       };
     
     const handleEditTask = (task: Task) => {
         dispatch(updateTask(task));
         dispatch(setEditTask(task));
-        dispatch(setShow(true)); 
+        dispatch(setShowForm(true)); 
       };
 
     return(
@@ -35,7 +40,7 @@ const Tasks:React.FC=()=>{
             <div className="tasks__btn-holder">
                 <button className="tasks__add-btn" onClick={hanbleShowForm}>Добавить</button>
             </div>
-            {show && (
+            {showForm && (
             <div className="modal-overlay"><TaskForm /></div>)
             }
             {(tasks.length===0)?<div className="tasks__none">Пусто</div>:(<table>
@@ -58,6 +63,7 @@ const Tasks:React.FC=()=>{
               <td>
                 <div className="edit-btn" onClick={() => handleEditTask(task)}><img src={editIcon} alt="Редактировать" /></div>
                 <div className="delete-btn" onClick={() => handleDeleteTask(task.id)}><img src={deleteIcon} alt="Удалить" /></div>
+                {showModal&&<div><Modal/></div>}
               </td>
             </tr>
           ))}
