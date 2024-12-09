@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import '../styles/TaskForm.scss';
 
 interface TaskFormProps {
     onAddTask: (task: { id: number; name: string; status: 'Новая' | 'В работе' | 'Завершена'; date: string }) => void;
@@ -31,8 +32,8 @@ const TaskForm:React.FC<TaskFormProps>=({ onAddTask })=>{
           setDate("");
     }
     return(
-        <form>
-            <div>
+        <form className="task-form">
+            <div className="task-form__holder">
                 <label>Название:</label>
                 <input id="name" value={name} onChange={(e)=>setName(e.target.value)}/>
                 <label>Статус:</label>

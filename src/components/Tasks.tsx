@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import TaskForm from "./TaskForm";
+import '../styles/TaskForm.scss';
 
 interface Task {
     id: number;
@@ -26,7 +27,7 @@ const Tasks:React.FC=()=>{
         <div className="tasks">
             <button onClick={hanbleShowForm}>Добавить</button>
             {showForm && (
-            <div><TaskForm onAddTask={handleAddTask}/></div>)
+            <div className="modal-overlay"><TaskForm onAddTask={handleAddTask}/></div>)
             }
             {(tasks.length===0)?<div>Пусто</div>:(<table>
         <thead>
