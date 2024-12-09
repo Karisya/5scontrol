@@ -47,19 +47,7 @@
       }
     }
   }
-  
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(50, 50, 50, 0.929); 
-    z-index: 999; 
-  }
-  
 
-  
 @media (max-width: 768px) {
     .task-form{
         width: 300px;
