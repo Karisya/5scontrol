@@ -4,7 +4,7 @@ import TaskForm from "./TaskForm";
 import '../styles/Tasks.scss';
 import deleteIcon from '../SVG/icons8-delete.svg';
 import editIcon from "../SVG/icons8-edit.svg"
-import { removeTask, updateTask } from '../redux/slices/tasksSlice';
+import { updateTask } from '../redux/slices/tasksSlice';
 import { setShowForm } from "../redux/slices/showFormSlice";
 import { setEditTask } from "../redux/slices/editTaskSlice";
 import { setShowModal } from "../redux/slices/showModalSlice";
@@ -26,7 +26,6 @@ const Tasks:React.FC=()=>{
 
     const handleDeleteTask = (id: number) => {
         dispatch(setShowModal({ showModal: true, taskId: id }));
-        dispatch(removeTask(id));
       };
     
     const handleEditTask = (task: Task) => {
@@ -40,6 +39,7 @@ const Tasks:React.FC=()=>{
             <div className="tasks__btn-holder">
                 <button className="tasks__add-btn" onClick={hanbleShowForm}>Добавить</button>
             </div>
+            {showModal&&<div className="modal-overlay"><Modal/></div>}
             {showForm && (
             <div className="modal-overlay"><TaskForm /></div>)
             }
@@ -63,7 +63,6 @@ const Tasks:React.FC=()=>{
               <td>
                 <div className="edit-btn" onClick={() => handleEditTask(task)}><img src={editIcon} alt="Редактировать" /></div>
                 <div className="delete-btn" onClick={() => handleDeleteTask(task.id)}><img src={deleteIcon} alt="Удалить" /></div>
-                {showModal&&<div><Modal/></div>}
               </td>
             </tr>
           ))}
