@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from "react";
 import '../styles/TaskForm.scss';
+import { useDispatch, useSelector } from "react-redux";
+import { addTask, removeTask, updateTask } from '../redux/slices/tasksSlice';
+import { setShow } from "../redux/slices/showSlice";
+import { setEditTask } from "../redux/slices/editTaskSlice";
 
 interface Task {
     id: number;
@@ -8,14 +12,10 @@ interface Task {
     date: string;
   }
   
+const TaskForm:React.FC=()=>{
 
-interface TaskFormProps {
-    task:null | Task;
-    onAddTask: (task: { id: number; name: string; status: 'Новая' | 'В работе' | 'Завершена'; date: string }) => void;
-    handleUpdateTask: (task: Task) => void;
-  }
-
-const TaskForm:React.FC<TaskFormProps>=({ task,onAddTask,handleUpdateTask })=>{
+  const task = useSelector((state: { editTask: { editTask: null | Task } }) => state.editTask.editTask);
+  const dispatch=useDispatch();
 
     const [name, setName] = useState("");
     const [status, setStatus] = useState<'Новая' | 'В работе' | 'Завершена'>('Новая');
@@ -45,9 +45,12 @@ const TaskForm:React.FC<TaskFormProps>=({ task,onAddTask,handleUpdateTask })=>{
           };
       
           if (task) {
-            handleUpdateTask(newTask); 
+            dispatch(updateTask(newTask)); 
+            dispatch(setEditTask(null));
+            dispatch(setShow(false))
           } else {
-            onAddTask(newTask); 
+            dispatch(addTask(newTask)); 
+            dispatch(setShow(false))
           }
 
           setName("");
