@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import TaskForm from "./TaskForm";
-import '../styles/TaskForm.scss';
+import '../styles/Tasks.scss';
+import deleteIcon from '../SVG/icons8-delete.svg';
+import editIcon from "../SVG/icons8-edit.svg"
 
 interface Task {
     id: number;
@@ -25,11 +27,13 @@ const Tasks:React.FC=()=>{
 
     return(
         <div className="tasks">
-            <button onClick={hanbleShowForm}>Добавить</button>
+            <div className="tasks__btn-holder">
+                <button className="tasks__add-btn" onClick={hanbleShowForm}>Добавить</button>
+            </div>
             {showForm && (
             <div className="modal-overlay"><TaskForm onAddTask={handleAddTask}/></div>)
             }
-            {(tasks.length===0)?<div>Пусто</div>:(<table>
+            {(tasks.length===0)?<div className="tasks__none">Пусто</div>:(<table>
         <thead>
           <tr>
             <th>ID задачи</th>
@@ -47,8 +51,8 @@ const Tasks:React.FC=()=>{
               <td>{task.status}</td>
               <td>{task.date}</td>
               <td>
-                <button className="edit-btn">Редактировать</button>
-                <button className="delete-btn">Удалить</button>
+                <div className="edit-btn"><img src={editIcon} alt="Редактировать" /></div>
+                <div className="delete-btn"><img src={deleteIcon} alt="Удалить" /></div>
               </td>
             </tr>
           ))}
