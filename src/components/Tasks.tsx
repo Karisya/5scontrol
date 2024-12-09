@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import TaskForm from "./TaskForm";
 import '../styles/Tasks.scss';
@@ -7,13 +7,8 @@ import editIcon from "../SVG/icons8-edit.svg"
 import { removeTask, updateTask } from '../redux/slices/tasksSlice';
 import { setShow } from "../redux/slices/showSlice";
 import { setEditTask } from "../redux/slices/editTaskSlice";
+import { Task } from "../utilts/utilts";
 
-interface Task {
-    id: number;
-    name: string;
-    status: 'Новая' | 'В работе' | 'Завершена';
-    date: string;
-}
 
 const Tasks:React.FC=()=>{
 

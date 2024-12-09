@@ -1,16 +1,10 @@
 import React, {useState, useEffect} from "react";
 import '../styles/TaskForm.scss';
 import { useDispatch, useSelector } from "react-redux";
-import { addTask, removeTask, updateTask } from '../redux/slices/tasksSlice';
+import { addTask, updateTask } from '../redux/slices/tasksSlice';
 import { setShow } from "../redux/slices/showSlice";
 import { setEditTask } from "../redux/slices/editTaskSlice";
-
-interface Task {
-    id: number;
-    name: string;
-    status: 'Новая' | 'В работе' | 'Завершена';
-    date: string;
-  }
+import { Task } from "../utilts/utilts";
   
 const TaskForm:React.FC=()=>{
 
