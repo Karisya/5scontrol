@@ -1,11 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface Task {
-    id: number;
-    name: string;
-    status: 'Новая' | 'В работе' | 'Завершена';
-    date: string;
-}
+import { Task } from '../../utilts/utilts';
 
 interface EditState {
   editTask: null | Task;

@@ -1,18 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface Task {
-  id: number;
-  name: string;
-  status: 'Новая' | 'В работе' | 'Завершена';
-  date: string;
-}
+import { loadFromLocalStorage, Task , saveToLocalStorage} from '../../utilts/utilts';
 
 interface TaskState {
   tasks: Task[];
 }
 
 const initialState: TaskState = {
-  tasks: [],
+  tasks: loadFromLocalStorage<Task[]>('tasks') || [],
 };
 
 const taskSlice = createSlice({
@@ -21,14 +15,17 @@ const taskSlice = createSlice({
   reducers: {
     addTask: (state, action: PayloadAction<Task>) => {
       state.tasks.push(action.payload);
+      saveToLocalStorage('tasks', state.tasks);
     },
     removeTask: (state, action: PayloadAction<number>) => {
       state.tasks = state.tasks.filter(task => task.id !== action.payload);
+      saveToLocalStorage('tasks', state.tasks);
     },
     updateTask: (state, action: PayloadAction<Task>) => {
       const index = state.tasks.findIndex(task => task.id === action.payload.id);
       if (index !== -1) {
         state.tasks[index] = action.payload;
+        saveToLocalStorage('tasks', state.tasks);
       }
     },
   },
