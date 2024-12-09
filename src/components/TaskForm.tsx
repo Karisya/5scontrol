@@ -1,15 +1,34 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import '../styles/TaskForm.scss';
 
+interface Task {
+    id: number;
+    name: string;
+    status: 'Новая' | 'В работе' | 'Завершена';
+    date: string;
+  }
+  
+
 interface TaskFormProps {
+    task:null | Task;
     onAddTask: (task: { id: number; name: string; status: 'Новая' | 'В работе' | 'Завершена'; date: string }) => void;
+    handleUpdateTask: (task: Task) => void;
   }
 
-const TaskForm:React.FC<TaskFormProps>=({ onAddTask })=>{
+const TaskForm:React.FC<TaskFormProps>=({ task,onAddTask,handleUpdateTask })=>{
 
     const [name, setName] = useState("");
     const [status, setStatus] = useState<'Новая' | 'В работе' | 'Завершена'>('Новая');
     const [date, setDate] = useState("");
+
+
+    useEffect(() => {
+        if (task) {
+          setName(task.name);
+          setStatus(task.status);
+          setDate(task.date);
+        }
+      }, [task]);
 
     const handleSubmit=(e: React.FormEvent)=>{
         e.preventDefault()
@@ -19,14 +38,18 @@ const TaskForm:React.FC<TaskFormProps>=({ onAddTask })=>{
         }
 
         const newTask = {
-            id: Date.now(),
+            id: task ? task.id : Date.now(), 
             name,
             status,
             date,
           };
       
-          onAddTask(newTask);
-      
+          if (task) {
+            handleUpdateTask(newTask); 
+          } else {
+            onAddTask(newTask); 
+          }
+
           setName("");
           setStatus("Новая");
           setDate("");
@@ -46,7 +69,7 @@ const TaskForm:React.FC<TaskFormProps>=({ onAddTask })=>{
                 </select>
                 <label>Дата:</label>
                 <input id="date" value={date} type="date" onChange={(e)=>setDate(e.target.value)}/>
-                <button type="submit" onClick={handleSubmit}>Добавить задачу</button>
+                <button type="submit" onClick={handleSubmit}>{task ? "Редактировать" : "Добавить"}</button>
             </div>
         </form>
     )
