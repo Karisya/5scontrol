@@ -45,7 +45,7 @@ const TaskForm:React.FC<TaskFormProps>=({ onAddTask })=>{
                 <option value="Завершена">Завершена</option>
                 </select>
                 <label>Дата:</label>
-                <input onChange={(e)=>setDate(e.target.value)}/>
+                <input id="date" value={date} type="date" onChange={(e)=>setDate(e.target.value)}/>
                 <button type="submit" onClick={handleSubmit}>Добавить задачу</button>
             </div>
         </form>
