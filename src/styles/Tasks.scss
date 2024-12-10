@@ -55,7 +55,6 @@
 
 @media (max-width: 768px) {
 
-
     tr {
     display: flex;
       margin-bottom: 15px;
@@ -70,6 +69,46 @@
       justify-content: space-between;
       padding: 10px;
       font-size: 14px;
+    }
+  }
+
+
+  @media (max-width: 520px) {
+
+    tr {
+      margin-bottom: 10px;
+    }
+
+    td {
+      padding: 5px;
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 430px) {
+    table {
+      display: block;
+    }
+    tbody{
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  
+    tr {
+      display: block;
+    }
+  
+    th {
+      display: none; 
+    }
+  
+    td {
+      display: block;
+      text-align: left;
+      border: none;
+      padding: 5px 10px;
     }
   }
 
