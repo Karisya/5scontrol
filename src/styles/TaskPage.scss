@@ -1,14 +1,17 @@
 .task-page{
+    padding: 20px;
     h2{
         color: #fb8c00;
     }
 
     @media (max-width: 768px) {
+        padding: 15px;
         h2{
             font-size: 20px;
         }
     }   
        @media (max-width: 480px) {
+        padding: 10px;
         h2{
             font-size: 18px;
         }
