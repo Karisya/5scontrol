@@ -45,8 +45,7 @@ const Tasks:React.FC=()=>{
             <div className="tasks__btn-holder">
                 <button className="tasks__add-btn" onClick={hanbleShowForm}>Добавить</button>
             </div>
-            <select className="tasks__filter"
-          value={filter}
+            <select className="tasks__filter" value={filter}
           onChange={(e) => setFilter(e.target.value)}>
           <option value="Все">Все</option>
           <option value="Новая">Новая</option>
