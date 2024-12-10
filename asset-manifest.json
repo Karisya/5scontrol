@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/5scontrol/static/css/main.82181401.css",
+    "main.js": "/5scontrol/static/js/main.9f444d18.js",
+    "static/js/453.ed3810f9.chunk.js": "/5scontrol/static/js/453.ed3810f9.chunk.js",
+    "static/media/icons8-delete.svg": "/5scontrol/static/media/icons8-delete.f81e4a026bbd6a123971042f986d08e6.svg",
+    "static/media/icons8-edit.svg": "/5scontrol/static/media/icons8-edit.c4e48b89a356dc5a3fc1b2f89090fa65.svg",
+    "index.html": "/5scontrol/index.html",
+    "main.82181401.css.map": "/5scontrol/static/css/main.82181401.css.map",
+    "main.9f444d18.js.map": "/5scontrol/static/js/main.9f444d18.js.map",
+    "453.ed3810f9.chunk.js.map": "/5scontrol/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.82181401.css",
+    "static/js/main.9f444d18.js"
+  ]
+}
